@@ -64,10 +64,12 @@ class Lib {
    */
   isTexture(atlas, id){
     atlas = 'assets/textures/'+atlas+'.json';
-    var loader = this.store.loader
-    if(atlas in loader.resources){
-      if(id in loader.resources[atlas].textures){
-        return true;
+    var loader = this.store.loader;
+    if(loader){
+      if(atlas in loader.resources){
+        if(id in loader.resources[atlas].textures){
+          return true;
+        }
       }
     }
     return false;

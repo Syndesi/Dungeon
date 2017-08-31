@@ -1,4 +1,4 @@
-import {default as pixiMultistyleText} from 'pixi-multistyle-text';
+import pixiMultistyleText from 'pixi-multistyle-text';
 
 /**
  * A small wrapper for {@link https://www.npmjs.com/package/pixi-multistyle-text| pixi-multistyle-text} so that special tags, mainly for colored text, are always accessible.<br>
