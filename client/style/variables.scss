@@ -1,0 +1,26 @@
+$cActive:        #5EC8FF;
+$cRed:           #FF5C5C;
+$cGreen:         #29FF74;
+$cGray:          desaturate($cActive, 100%);
+$cLightGray:     lighten($cGray, 20%);
+$cWhite:         #FFF;
+$cBlack:         #000;
+$cBarBackground: $cBlack;
+$cInputBg:       rgba(0, 0, 0, 0.1);
+
+$gap:            10px;
+$barHeight:      50px;
+$radius:         3px;
+$siteWidth:      1200px;
+
+@mixin transition($obj){
+  transition:$obj 0.2s ease-in-out;
+}
+
+@function getTextColor($c){
+  @if(lightness($c) >= 50){
+    @return $cBlack;
+  } @else {
+    @return $cWhite;
+  }
+}

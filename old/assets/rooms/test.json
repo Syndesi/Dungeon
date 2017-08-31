@@ -1,0 +1,57 @@
+{
+  "blocks": {
+    "0": {
+      "textures": [
+        {
+          "title": "basalt brick",
+          "atlas": "texture",
+          "id": "tile-8-1",
+          "probability": 0.9
+        },
+        {
+          "title": "cracked basalt brick",
+          "atlas": "texture",
+          "id": "tile-7-1",
+          "probability": 0.1
+        }
+      ]
+    },
+    "1": {
+      "textures": [
+        {
+          "title": "gray brick",
+          "atlas": "texture",
+          "id": "tile-11-3",
+          "probability": 0.9
+        },
+        {
+          "title": "cracked gray brick",
+          "atlas": "texture",
+          "id": "tile-13-3",
+          "probability": 0.1
+        }
+      ]
+    },
+    "2": {
+      "textures": [
+        {
+          "title": "lava brick",
+          "atlas": "texture",
+          "id": "tile-8-2",
+          "probability": 1
+        }
+      ]
+    },
+  },
+  "room": [
+    "00000000000000000000",
+    "01111111111111111110",
+    "01111111111111111110",
+    "01111111111111111110",
+    "00011000000000000000",
+    "01111111111101111110",
+    "01111111111101111110",
+    "01111111111101111110",
+    "00000000000000000000",
+  ]
+}
