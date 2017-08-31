@@ -1156,10 +1156,6 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
 
-component-event@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/component-event/-/component-event-0.1.4.tgz#3de78fc28782381787e24bf2a7c536bf0142c9b4"
-
 compressible@~2.0.10:
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.11.tgz#16718a75de283ed8e604041625a2064586797d8a"
@@ -3105,12 +3101,6 @@ mocha@^3.5.0:
     lodash.create "3.1.1"
     mkdirp "0.5.1"
     supports-color "3.1.2"
-
-mouse-wheel-event@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/mouse-wheel-event/-/mouse-wheel-event-1.2.3.tgz#5bf4e73b4dac03d48497d29c290ba405dc6c1f56"
-  dependencies:
-    component-event "^0.1.4"
 
 ms@2.0.0:
   version "2.0.0"

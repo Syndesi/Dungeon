@@ -5,7 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
-    "mouse-wheel-event": "^1.2.3",
     "pixi-multistyle-text": "^0.6.0",
     "pixi.js": "^4.5.4",
     "random-seed": "^0.3.0"
@@ -17,7 +16,7 @@
     "start-hmr": "webpack-dev-server --content-base client/ --inline",
     "test": "mocha -r jsdom-global/register -r ignore-styles --compilers js:babel-core/register"
   },
-  "repository": " ",
+  "repository": "https://github.com/Syndesi/Dungeon",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

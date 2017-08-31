@@ -39,14 +39,16 @@ class Lib {
     atlas = 'assets/textures/'+atlas+'.json';
     var msg = false;
     var loader = this.store.loader;
-    if(atlas in loader.resources){
-      if(id in loader.resources[atlas].textures){
-        return loader.resources[atlas].textures[id];
+    if(loader){
+      if(atlas in loader.resources){
+        if(id in loader.resources[atlas].textures){
+          return loader.resources[atlas].textures[id];
+        } else {
+          msg = 'unknown id: '+id;
+        }
       } else {
-        msg = 'unknown id: '+id;
+        msg = 'unknown atlas: '+atlas;
       }
-    } else {
-      msg = 'unknown atlas: '+atlas;
     }
     if(debug && msg){
       console.log(msg);

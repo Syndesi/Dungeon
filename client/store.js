@@ -1,5 +1,3 @@
-import wheel from 'mouse-wheel-event';
-
 import Lib from './lib.js';
 
 import Keyboard from './util/keyboard.js';
@@ -94,25 +92,6 @@ class Store {
     this.key.addKeyDown('level', 'esc', () => {
       console.log('open menu');
     });
-    // mouse wheel
-    /*
-    wheel(this.el, (dx, dy, dz, e) => {
-      if(this.context == 'level'){
-        var slot = this.getInventoryActiveSlot();
-        if(0 < dy){
-          slot--;
-        } else {
-          slot++;
-        }
-        if(slot < 0){
-          slot = 8;
-        }
-        if(slot > 8){
-          slot = 0;
-        }
-        this.setInventoryActiveSlot(slot);
-      }
-    }, true)*/
   }
 
 }

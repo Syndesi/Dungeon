@@ -132,18 +132,19 @@ class Grid {
     var down = sum.height - r.y;
     var left = -r.x;
     var right = sum.width - r.x;
-    if(up + down > 0){
-      // point closer to the top edge
-      res.y = up;
-    } else {
-      res.y = down;
-    }
     if(left + right > 0){
       // point closer to the left edge
       res.x = left;
     } else {
       res.x = right;
     }
+    if(up + down > 0){
+      // point closer to the top edge
+      res.y = up;
+    } else {
+      res.y = down;
+    }
+    return res;
   }
 
   /**
@@ -154,6 +155,7 @@ class Grid {
    */
   getSmallestTranslationVector(obj1, obj2){
     var r = this.getMinkowskiDifference(obj1, obj2);
+    // if x and y are the same, the y-part will get priorized so that e.g. gravity is solved first.
     if(Math.abs(r.x) < Math.abs(r.y)){
       // |x| < |y|
       r.y = 0;
@@ -161,6 +163,7 @@ class Grid {
       // |y| < |x|
       r.x = 0;
     }
+    return r;
   }
 
 }
