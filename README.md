@@ -5,6 +5,8 @@ The reason why I wanted to participate was that I destroyed my computers motherb
 And while developing I learned to write unit tests and how to document code so that special software, e.g. [JSDoc](http://usejsdoc.org/), can generate a cool looking website like this one. And this alone is actually a huge achievement for myself :D<br>
 Btw.: I developed this game on my laptop, a [Lenovo 100S](http://www3.lenovo.com/de/de/laptops/ideapad/100-series-/IdeaPad-100S-11IBY/p/88EM10S0639) with an Intel Atom 32 bit and 2 GB of RAM. And I´m actually quiet impressed how well it performed, even though Firefox and ST3 crashed multiple times the day :P
 
+[Demo](https://syndesi.github.io/Dungeon/)
+
 ## Installation
 
 1. You will need to install [Yarn](https://yarnpkg.com/lang/en/) in order to build this game.
