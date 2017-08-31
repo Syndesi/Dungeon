@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Class: Grid</title>
+    <title>Class: Store</title>
     
     
     
@@ -594,7 +594,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Grid.html">Class: Grid</h1>
+        <h1 class="page-title" data-filename="Store.html">Class: Store</h1>
         
 
 
@@ -603,11 +603,10 @@
     
 <header>
     <h2>
-    Grid
+    Store
     </h2>
     
-        <div class="class-description"><p>A helper class with functions that are usefull in grids.<br>
-Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></div>
+        <div class="class-description"><p>The store is used to calculate and store things which should be globally available.</p></div>
     
 </header>  
 
@@ -619,14 +618,14 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
         
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="Grid">
+        <h4 class="name" id="Store">
             
-            new Grid<span class="signature">(width, height)</span>
+            new Store<span class="signature">(el)</span>
         </h4>
     
         
         <div class="tag-source">
-            util/grid.js, line 5
+            store.js, line 10
         </div>
         
     </div>
@@ -654,8 +653,6 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
 		<th>Type</th>
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -666,58 +663,23 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
 	
         <tr>
             
-                <td class="name"><code>width</code></td>
+                <td class="name"><code>el</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">int</span>
+<span class="param-type">DOM-node</span>
 
 
             
             </td>
             
             
-                <td class="default">
-                
-                    5
-                
-                </td>
-            
             
             <td class="description last">
                 
-                <p>the columns in the grid</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>height</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    5
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                <p>the rows in the grid</p></td>
+                <p>the element to which the game is bound to</p></td>
         </tr>
 	
 	
@@ -786,14 +748,14 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="getCoordinate">
+        <h4 class="name" id="addLevelKeyEvents">
             
-            getCoordinate<span class="signature">(index)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{int}</span>
+            addLevelKeyEvents<span class="signature">()</span>
         </h4>
     
         
         <div class="tag-source">
-            util/grid.js, line 50
+            store.js, line 85
         </div>
         
     </div>
@@ -804,7 +766,7 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
     
     
     <div class="description">
-        <p>Returns the index of a 1D-coordinate in a 2D-system.</p>
+        <p>Just adds keyboard-events to the canvas</p>
     </div>
     
 
@@ -812,1227 +774,6 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
     
     
     
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the iD-coordinate/index</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        int
-                        
-                    
-            </td>
-            <td class="description last">the resulting 2D-coordinate or false if it isn´t part of this grid.</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="getIndex">
-            
-            getIndex<span class="signature">(x, y)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{int}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            util/grid.js, line 38
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Returns the index of a 2D-coordinate in a 1D-system.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the x-coordinate</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the y-coordinate</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        int
-                        
-                    
-            </td>
-            <td class="description last">the resulting 1D-coordinate or false if it isn´t part of this grid</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="getMinkowskiDifference">
-            
-            getMinkowskiDifference<span class="signature">(obj1, obj2)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{vector}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            util/grid.js, line 118
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Calculates the Minkowski-difference between both objects, see <a target="_blank" href="https://wildbunny.co.uk/blog/2011/12/14/how-to-make-a-2d-platform-game-part-2-collision-detection">Wildbunny´s tutorial</a>.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>obj1</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the first object</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>obj2</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the second object</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        vector
-                        
-                    
-            </td>
-            <td class="description last">the vector to move obj2 to the closest corner of obj1</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="getRelative">
-            
-            getRelative<span class="signature">(x, y, dx, dy)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{cell}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            util/grid.js, line 77
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Returns a cell relative to another cell - if it´s existing.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>x</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the x-coordinate of the first cell</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>y</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the y-coordinate of the first cell</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>dx</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the relative x-distance of both cells</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>dy</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the relative y-distance of both cells</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        cell
-                        
-                    
-            </td>
-            <td class="description last">returns the wanted cell or false if it isn´t part of this grid</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="getSmallestTranslationVector">
-            
-            getSmallestTranslationVector<span class="signature">(obj1, obj2)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{vector}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            util/grid.js, line 159
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Takes the Minkowski-difference and removes the longer part of the vector so that the translation is as small as possible.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>obj1</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the first object</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>obj2</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the second object</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        vector
-                        
-                    
-            </td>
-            <td class="description last">the shortened Minkowski-difference, e.g. (3, 4) =&gt; (3, 0)</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="isColliding">
-            
-            isColliding<span class="signature">(obj1, obj2)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{bool}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            util/grid.js, line 90
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Check if two objects are colliding (=overlapping) or not, based on the AABB-method.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>obj1</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the first object</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>obj2</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the second object</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        bool
-                        
-                    
-            </td>
-            <td class="description last">true: the objects are overlapping, false: they are seperated or just touching each other</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="isInGrid">
-            
-            isInGrid<span class="signature">(index)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{bool}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            util/grid.js, line 62
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>checks if an 1D-coordinate is part of this grid or not.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>index</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the 1D-coordinate</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        bool
-                        
-                    
-            </td>
-            <td class="description last">true: it´s part of this system, false: it´s not</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="iterate">
-            
-            iterate<span class="signature">(f)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            util/grid.js, line 24
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Iterates over every single element in this grid.</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>f</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the function which should be called</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
     
     
     
@@ -2078,14 +819,14 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="resolveCollision">
+        <h4 class="name" id="init">
             
-            resolveCollision<span class="signature">(obj1, obj2)</span>
+            init<span class="signature">()</span>
         </h4>
     
         
         <div class="tag-source">
-            util/grid.js, line 105
+            store.js, line 65
         </div>
         
     </div>
@@ -2096,7 +837,149 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
     
     
     <div class="description">
-        <p>Moves the second object just enough so that both objects aren´t colliding anymore.</p>
+        <p>This function will initialize every graphic.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="resetLevel">
+            
+            resetLevel<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            store.js, line 40
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This function will be called when the player enters the room with the exit-door.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="update">
+            
+            update<span class="signature">(delta)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            store.js, line 55
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>This is the game-loop.</p>
     </div>
     
 
@@ -2127,13 +1010,13 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
 	
         <tr>
             
-                <td class="name"><code>obj1</code></td>
+                <td class="name"><code>delta</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">float</span>
 
 
             
@@ -2143,30 +1026,7 @@ Used by <a href="Level.html">Level</a> and <a href="Room.html">Room</a>.</p></di
             
             <td class="description last">
                 
-                <p>the first object</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>obj2</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                <p>the second object</p></td>
+                <p>the time since the last frame</p></td>
         </tr>
 	
 	

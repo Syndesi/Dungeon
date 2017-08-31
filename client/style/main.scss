@@ -21,30 +21,132 @@
 
 body {
   margin:0px;
-  padding:0px;
+  padding:50px 0px 0px 0px;
   position:relative;
   overflow-x:hidden;
-  background-color:#FFF;
-  font-family:'forward', 'Fira Sans', sans-serif;
-  line-height:1.2;
+  background-color:#fff;
+  font-family:'Fira Sans', sans-serif;
+  font-size:16px;
+  text-align:justify;
 }
 
+h2 {
+  font-size:22px;
+  font-style:italic;
+}
 
+h1, h2, h3, h4, h5, h6, p {
+  line-height:1.2;
+  margin:10px 0px;
+  padding:0px;
+  font-weight:300;
+}
 
+p {
+  font-weight:400;
+}
 
+a {
+  color:$cActive;
+  text-decoration:underline;
+  text-decoration-style:dotted;
+  text-decoration-color:transparent;
+  transition:all 0.2s ease-in-out;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration-color:$cActive;
+  }
+}
 
+svg {
+ height:40px;
+ width:auto;
+}
 
+#bar {
+  position:fixed;
+  top:0px;
+  left:0px;
+  right:0px;
+  height:50px;
+  background-color:#000;
+  z-index:1000;
+  .innerWidth {
+    position:relative;
+    top:0px;
+    left:calc(50% - 400px);
+    width:800px;
+    a {
+      color:#fff;
+      text-decoration:none;
+      &.title {
+        float:left;
+        p {
+          font-style:italic;
+          font-size:25px;
+        }
+      }
+      &.link {
+        float:right;
+        p {
+          font-size:20px;
+        }
+      }
+      p {
+        float:left;
+        line-height:50px;
+        color:#fff;
+        margin:0px;
+        font-weight:200;
+        transition:color 0.2s ease-in-out;
+      }
+      svg {
+        float:right;
+        height:50px;
+        padding:10px;
+        width:auto;
+        fill:#fff;
+        transition:fill 0.2s ease-in-out;
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        p {
+          color:$cActive;
+        }
+        svg {
+          fill:$cActive;
+        }
+      }
+    }
+  }
+}
 
-
-#app {
+section {
   float:left;
   width:100%;
   position:relative;
-  > .pixi {
-    position:absolute;
-    left:50%;
-    top:50px;
-    transform:translateX(-50%);
-    font-family:'forward';
-  }
+  margin:20px 0px 0px 0px;
+}
+
+#app {
+  position:relative;
+  left:calc(50% - 400px);
+  width:800px;
+  height:500px;
+}
+
+#page {
+  position:relative;
+  left:calc(50% - 400px);
+  width:800px;
+  padding:0px;
+}
+
+.forward {
+  font-family:'forward';
+  position:fixed;
+  top:-50px;
+  left:0px;
 }

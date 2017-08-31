@@ -25,52 +25,64 @@ class Level extends Grid{
       'height': 6 * this.store.scale * 16,
       'width': 6 * this.store.scale * 16
     };
+    this.exitIndex = 0;
     this.rooms = [];
     this.level = new PIXI.Container();
     this.generate();
     this.finn = new Finn(this.store);
-    this.finn.x = 2 * 16 * this.store.scale;
-    this.finn.y = 4 * 16 * this.store.scale;
+    this.finn.x = 2.5 * 16 * this.store.scale;
+    this.finn.y = 3 * 16 * this.store.scale;
     this.level.addChild(this.finn);
   }
 
+  /**
+   * Updates the level with it´s animations and, of course, Finn
+   * @param  {float} delta the time since the last frame
+   */
   update(delta){
     for(var i = 0;i < this.rooms.length;i++){
       this.rooms[i].update(delta);
     }
+    this.finn.update(delta);
   }
 
   /**
    * Moves the level upwards
    */
   moveUp(){
-    this.move(0, 4);
+    this.move(0, -4);
   }
 
   /**
    * Moves the level to the right
    */
   moveRight(){
-    this.move(-4, 0);
+    this.move(4, 0);
   }
 
   /**
    * Moves the level downwards
    */
   moveDown(){
-    this.move(0, -4);
+    this.move(0, 4);
   }
 
   /**
    * Moves the level to the left
    */
   moveLeft(){
-    this.move(4, 0);
+    this.move(-4, 0);
   }
 
+  /**
+   * The general function to "move" the scene.
+   * @param  {int} x the x-movement
+   * @param  {int} y the y-movement
+   */
   move(x, y){
-    this.level.x += x;
-    this.level.y += y;
+    this.moveFinn(x, y);
+    this.level.x = -(this.finn.x + this.finn.width/2 - this.store.game.screen.width / 2);
+    this.level.y = -(this.finn.y + this.finn.height/2 - this.store.game.screen.height / 2);
     if(0 < this.level.x){
       this.level.x = 0;
     }
@@ -86,6 +98,71 @@ class Level extends Grid{
       this.level.y = minY;
     }
     this.recalculateScreen();
+  }
+
+  /**
+   * Moves Finn and resolves his collisions
+   * @param  {int} x the x-movement
+   * @param  {int} y the y-movement
+   */
+  moveFinn(x, y){
+    var lastX = this.finn.x;
+    var lastY = this.finn.y;
+    this.finn.x += x;
+    this.finn.y += y;
+    var roomX = Math.floor(this.finn.x / this.room.width);
+    var roomY = Math.floor(this.finn.y / this.room.height);
+    var room = this.rooms[this.getIndex(roomX, roomY)];
+    if(room){
+      this.finn.x -= roomX * this.room.width;
+      this.finn.y -= roomY * this.room.height;
+      this.resolveCollisions(room, this.finn);
+      this.finn.x += roomX * this.room.width;
+      this.finn.y += roomY * this.room.height;
+    } else {
+      this.finn.x = lastX;
+      this.finn.y = lastY;
+    }
+    if(this.getIndex(roomX, roomY) == this.exitIndex){
+      // Finn has reached the end!
+      this.store.resetLevel();
+    }
+  }
+
+  /**
+   * Resolves all collisions between the given entity and all solid walls in this room.
+   * @param  {object} entity the entity which should be resolved
+   */
+  resolveCollisions(room, entity){
+    var collisions     = this.getCollisions(room, entity);
+    var running        = true;
+    var lastCollisions = collisions.length;
+    while(collisions.length > 0 && running){
+      this.resolveCollision(collisions[0], entity);
+      collisions = this.getCollisions(room, entity);
+      if(collisions.length >= lastCollisions || collisions.length <= 0){
+        running = false;
+      }
+    }
+  }
+
+  /**
+   * Returns all collisions between the given entity and all solid walls in this room.
+   * @param  {object} entity the entity which is checked for collisions
+   * @return {array}         an array containing all tiles which are colliding with the given entity
+   */
+  getCollisions(room, entity){
+    var collisions = [];
+    var wall = false;
+    room.iterate((x, y) => {
+      wall = room.grid[room.getIndex(x, y)].fg;
+      if(wall){
+        if(room.isColliding(entity, wall)){
+          collisions.push(wall);
+        }
+      }
+    });
+    return collisions;
   }
 
   /**
@@ -156,6 +233,7 @@ class Level extends Grid{
         generating = false;
       }
     }
+    this.exitIndex = ends.shift();
     this.iterate((x, y) => {
       delete this.grid[this.getIndex(x, y)].visited;
     });
@@ -163,10 +241,14 @@ class Level extends Grid{
       var index    = this.getIndex(x, y);
       var cell     = this.grid[index];
       var chest = false;
+      var exit = false;
       if(ends.includes(index)){
         chest = true;
       }
-      this.rooms[index] = new Room(this.store, cell.wall, this.r.random(), chest);
+      if(this.exitIndex == index){
+        exit = true;
+      }
+      this.rooms[index] = new Room(this.store, cell.wall, this.r.random(), chest, exit);
       this.rooms[index].room.x = this.room.width * x;
       this.rooms[index].room.y = this.room.height * y;
       this.level.addChild(this.rooms[index].room);

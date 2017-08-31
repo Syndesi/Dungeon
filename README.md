@@ -32,7 +32,9 @@ Due to the [bug #9021586](https://developer.microsoft.com/en-us/microsoft-edge/p
 While developing this game I asked several people/teams if I could use their assets, mainly because I'm not that good at creating pixel art :P<br>
 And here are these heroes:
  - RadioactiveStud from the [DivineRPG](https://github.com/DivineRPG/DivineRPG) team, who created an awesome mod for Minecraft
- - Rhodox from the [Painerly Pack](http://painterlypack.net/), a resourcepack generation tool for Minecraft
+ - Rhodox from the [Painterly Pack](http://painterlypack.net/), a resourcepack generation tool for Minecraft
+
+
 Because the implementation (mainly drawing) of entitys took way longer than expected, I never implemented these cool assets :(
 
 I also used these projects:

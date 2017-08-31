@@ -16,8 +16,9 @@ class Room extends Grid{
    * @param  {object}  walls an object containing the state of it´s 4 walls
    * @param  {string}  seed  the seed which should be used by this room
    * @param  {bool}    chest true: a chest will be generated in this room, false: no chest
+   * @param  {bool}    exit  true: this room will contain the level´s exit, false: no exit
    */
-  constructor(store, walls, seed = 'seed', chest = false){
+  constructor(store, walls, seed = 'seed', chest = false, exit = false){
     super(6, 6);
     this.r = new randomSeed(seed);
     this.store = store;
@@ -25,6 +26,7 @@ class Room extends Grid{
     this.scale = this.store.scale;
     this.size  = 16;
     this.chest = chest;
+    this.exit  = exit;
     this.iterate((x, y) => {
       this.grid[this.getIndex(x, y)] = {
         'bg': null,
@@ -55,42 +57,6 @@ class Room extends Grid{
   }
 
   /**
-   * Resolves all collisions between the given entity and all solid walls in this room.
-   * @param  {object} entity the entity which should be resolved
-   */
-  resolveCollisions(entity){
-    collisions = this.getCollisions(entity);
-    var running = true;
-    var lastCollisions = collisions.length;
-    while(collisions.length > 0 && running){
-      this.resolveCollisions(collisions[0], entity);
-      collisions = this.getCollisions(entity);
-      if(collisions.length >= lastCollisions || collisions.length <= 0){
-        running = false;
-      }
-    }
-  }
-
-  /**
-   * Returns all collisions between the given entity and all solid walls in this room.
-   * @param  {object} entity the entity which is checked for collisions
-   * @return {array}         an array containing all tiles which are colliding with the given entity
-   */
-  getCollisions(entity){
-    var collisions = [];
-    var wall = false;
-    this.iterate((x, y) => {
-      wall = this.grid[this.getIndex(x, y)].fg;
-      if(wall){
-        if(this.isColliding(entry, wall)){
-          collisions.push(wall);
-        }
-      }
-    });
-    return collisions;
-  }
-
-  /**
    * Generates the room.
    */
   generate(){
@@ -104,6 +70,7 @@ class Room extends Grid{
     this.generateTorches();
     this.generateDoors();
     this.generateChest();
+    this.generateExit();
     this.draw();
   }
 
@@ -182,6 +149,18 @@ class Room extends Grid{
       var y = 4;
       this.grid[this.getIndex(x, y)].deco = this.getSprite('tilemap', 'chest-1');
       this.grid[this.getIndex(x, y - 1)].deco = null;
+    }
+  }
+
+  /**
+   * Generates a chest if activated.
+   */
+  generateExit(){
+    if(this.exit){
+      this.grid[this.getIndex(2, 3)].deco = this.getSprite('tilemap', 'door-0');
+      this.grid[this.getIndex(2, 4)].deco = this.getSprite('tilemap', 'door-1');
+      this.grid[this.getIndex(3, 4)].deco = this.getSprite('tilemap', 'door-2');
+      this.grid[this.getIndex(3, 3)].deco = this.getSprite('tilemap', 'door-3');
     }
   }
 

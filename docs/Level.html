@@ -12,7 +12,7 @@
     <meta property="og:type" content="website"/>
     <meta property="og:image" content=""/>
     
-    <meta property="og:url" content=""/>
+    <meta property="og:url" content="https://github.com/Syndesi/Dungeon"/>
     
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -26,7 +26,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"Dungeon","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"","description":"","keyword":""},"default":{}};
+    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"Dungeon","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":"https://github.com/Syndesi/Dungeon"},"meta":{"title":"","description":"","keyword":""},"default":{}};
     </script>
     
 
@@ -305,6 +305,8 @@
             
                 <li data-name="Level#generate"><a href="Level.html#generate">generate</a></li>
             
+                <li data-name="Level#getCollisions"><a href="Level.html#getCollisions">getCollisions</a></li>
+            
                 <li data-name="Level#getCoordinate"><a href="Level.html#getCoordinate">getCoordinate</a></li>
             
                 <li data-name="Level#getIndex"><a href="Level.html#getIndex">getIndex</a></li>
@@ -323,7 +325,11 @@
             
                 <li data-name="Level#iterate"><a href="Level.html#iterate">iterate</a></li>
             
+                <li data-name="Level#move"><a href="Level.html#move">move</a></li>
+            
                 <li data-name="Level#moveDown"><a href="Level.html#moveDown">moveDown</a></li>
+            
+                <li data-name="Level#moveFinn"><a href="Level.html#moveFinn">moveFinn</a></li>
             
                 <li data-name="Level#moveLeft"><a href="Level.html#moveLeft">moveLeft</a></li>
             
@@ -336,6 +342,10 @@
                 <li data-name="Level#removeWalls"><a href="Level.html#removeWalls">removeWalls</a></li>
             
                 <li data-name="Level#resolveCollision"><a href="Level.html#resolveCollision">resolveCollision</a></li>
+            
+                <li data-name="Level#resolveCollisions"><a href="Level.html#resolveCollisions">resolveCollisions</a></li>
+            
+                <li data-name="Level#update"><a href="Level.html#update">update</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -433,13 +443,13 @@
             
                 <li data-name="Room#generateDoors"><a href="Room.html#generateDoors">generateDoors</a></li>
             
+                <li data-name="Room#generateExit"><a href="Room.html#generateExit">generateExit</a></li>
+            
                 <li data-name="Room#generateForeground"><a href="Room.html#generateForeground">generateForeground</a></li>
             
                 <li data-name="Room#generateTapestry"><a href="Room.html#generateTapestry">generateTapestry</a></li>
             
                 <li data-name="Room#generateTorches"><a href="Room.html#generateTorches">generateTorches</a></li>
-            
-                <li data-name="Room#getCollisions"><a href="Room.html#getCollisions">getCollisions</a></li>
             
                 <li data-name="Room#getCoordinate"><a href="Room.html#getCoordinate">getCoordinate</a></li>
             
@@ -461,11 +471,41 @@
             
                 <li data-name="Room#resolveCollision"><a href="Room.html#resolveCollision">resolveCollision</a></li>
             
-                <li data-name="Room#resolveCollisions"><a href="Room.html#resolveCollisions">resolveCollisions</a></li>
-            
                 <li data-name="Room#setCache"><a href="Room.html#setCache">setCache</a></li>
             
                 <li data-name="Room#update"><a href="Room.html#update">update</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Store">
+            <span class="title">
+                <a href="Store.html">Store</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Store#addLevelKeyEvents"><a href="Store.html#addLevelKeyEvents">addLevelKeyEvents</a></li>
+            
+                <li data-name="Store#init"><a href="Store.html#init">init</a></li>
+            
+                <li data-name="Store#resetLevel"><a href="Store.html#resetLevel">resetLevel</a></li>
+            
+                <li data-name="Store#update"><a href="Store.html#update">update</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -790,7 +830,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/level.js, line 181
+            util/level.js, line 263
         </div>
         
     </div>
@@ -935,7 +975,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/level.js, line 122
+            util/level.js, line 199
         </div>
         
     </div>
@@ -990,6 +1030,151 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
     
     
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="getCollisions">
+            
+            getCollisions<span class="signature">(entity)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{array}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            util/level.js, line 154
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns all collisions between the given entity and all solid walls in this room.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>entity</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the entity which is checked for collisions</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        array
+                        
+                    
+            </td>
+            <td class="description last">an array containing all tiles which are colliding with the given entity</td>
+        </tr>
+    
+    </tbody>
+</table>
+
     
     
     
@@ -1325,7 +1510,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/grid.js, line 115
+            util/grid.js, line 118
         </div>
         
     </div>
@@ -1493,7 +1678,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/level.js, line 217
+            util/level.js, line 299
         </div>
         
     </div>
@@ -1856,7 +2041,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/grid.js, line 155
+            util/grid.js, line 159
         </div>
         
     </div>
@@ -2452,6 +2637,145 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="move">
+            
+            move<span class="signature">(x, y)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            util/level.js, line 82
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The general function to &quot;move&quot; the scene.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the x-movement</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the y-movement</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="moveDown">
             
             moveDown<span class="signature">()</span>
@@ -2459,7 +2783,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/level.js, line 60
+            util/level.js, line 66
         </div>
         
     </div>
@@ -2523,6 +2847,145 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="moveFinn">
+            
+            moveFinn<span class="signature">(x, y)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            util/level.js, line 108
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Moves Finn and resolves his collisions</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the x-movement</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the y-movement</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="moveLeft">
             
             moveLeft<span class="signature">()</span>
@@ -2530,7 +2993,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/level.js, line 67
+            util/level.js, line 73
         </div>
         
     </div>
@@ -2601,7 +3064,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/level.js, line 53
+            util/level.js, line 59
         </div>
         
     </div>
@@ -2672,7 +3135,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/level.js, line 46
+            util/level.js, line 52
         </div>
         
     </div>
@@ -2743,7 +3206,7 @@ The algorithm <em>recursive backtracker</em> is covered by <a target="_blank" hr
     
         
         <div class="tag-source">
-            util/level.js, line 95
+            util/level.js, line 172
         </div>
         
     </div>
@@ -2815,7 +3278,7 @@ It´s a huge performance increase and until the level contains several hundred r
     
         
         <div class="tag-source">
-            util/level.js, line 237
+            util/level.js, line 319
         </div>
         
     </div>
@@ -2985,7 +3448,7 @@ It´s a huge performance increase and until the level contains several hundred r
     
         
         <div class="tag-source">
-            util/grid.js, line 102
+            util/grid.js, line 105
         </div>
         
     </div>
@@ -3113,6 +3576,238 @@ It´s a huge performance increase and until the level contains several hundred r
     
 </dd>
 
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="resolveCollisions">
+            
+            resolveCollisions<span class="signature">(entity)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            util/level.js, line 136
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Resolves all collisions between the given entity and all solid walls in this room.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>entity</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the entity which should be resolved</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="update">
+            
+            update<span class="signature">(delta)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            util/level.js, line 42
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Updates the level with it´s animations and, of course, Finn</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>delta</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">float</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the time since the last frame</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
         </dl>
     
     
@@ -3132,7 +3827,7 @@ It´s a huge performance increase and until the level contains several hundred r
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Aug 31 2017 03:25:29 GMT+0200 (Mitteleuropäische Sommerzeit)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Thu Aug 31 2017 23:50:22 GMT+0200 (Mitteleuropäische Sommerzeit)
         </footer>
     </div>
 </div>

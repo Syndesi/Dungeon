@@ -15,6 +15,10 @@ class Finn extends Entity {
    */
   constructor(store){
     super(store, 'jumpingLeft');
+    this.data.direction = 'Right';
+    this.data.lastX = this.x;
+    this.data.lastY = this.y;
+    this.data.direction = 'Right';
     this.sprite.width = 16 * 3;
     this.sprite.height = 16 * 2 * 3;
     this.sprite.texture = this.store.lib.getTexture('tilemap', 'finn-right');
@@ -26,7 +30,24 @@ class Finn extends Entity {
    */
   update(delta){
     this.data.frame += delta * 0.15;
-    switch(this.data.state){
+    var d = this.data;
+    var state = 'idleRight';
+    if(Math.abs(d.lastX - this.x) > 1){
+      if(d.lastX - this.x > 0){
+        d.direction = 'Left';
+      } else {
+        d.direction = 'Right';
+      }
+      state = 'walking'+d.direction;
+    } else {
+      state = 'idle'+d.direction;
+    }
+    if(Math.abs(d.lastY - this.y) > 1){
+      state = 'jumping'+d.direction;
+    }
+    this.data.lastX = this.x;
+    this.data.lastY = this.y;
+    switch(state){
       case 'idleRight':
         this.stateIdleRight();
         break;
